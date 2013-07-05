@@ -42,4 +42,16 @@ describe Int2Number do
     @int_2_number.as_number(80).should eq("eighty")
     @int_2_number.as_number(90).should eq("ninety")
   end
+
+  it "works not just for multiplies of ten between 20 and 100" do
+    @int_2_number.as_number(21).should eq("twentyone")
+    @int_2_number.as_number(32).should eq("thirtytwo")
+    @int_2_number.as_number(43).should eq("fourtythree")
+    @int_2_number.as_number(54).should eq("fiftyfour")
+    @int_2_number.as_number(65).should eq("sixtyfive")
+    @int_2_number.as_number(76).should eq("seventysix")
+    @int_2_number.as_number(87).should eq("eightyseven")
+    @int_2_number.as_number(98).should eq("ninetyeight")
+    @int_2_number.as_number(99).should eq("ninetynine")
+  end
 end
