@@ -18,4 +18,17 @@ describe Int2Number do
     @int_2_number.as_number(9).should eq("nine")
     @int_2_number.as_number(0).should eq("zero")
   end
+  
+  it "returns works with the numbers between 10 and 19" do
+    @int_2_number.as_number(10).should eq("ten")
+    @int_2_number.as_number(11).should eq("eleven")
+    @int_2_number.as_number(12).should eq("twelve")
+    @int_2_number.as_number(13).should eq("thirteen")
+    @int_2_number.as_number(14).should eq("fourteen")
+    @int_2_number.as_number(15).should eq("fifteen")
+    @int_2_number.as_number(16).should eq("sixteen")
+    @int_2_number.as_number(17).should eq("seventeen")
+    @int_2_number.as_number(18).should eq("eighteen")
+    @int_2_number.as_number(19).should eq("nineteen")
+  end
 end
