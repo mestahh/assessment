@@ -64,8 +64,12 @@ describe Int2Number do
   end
   
   it "works for numbers between 1000 and 1000 0000" do
-     # @int_2_number.as_number(1110).should eq("one thousand one hundred and ten")
-     # @int_2_number.as_number(9999).should eq("nine thousand nine hundred and ninetynine")
+     @int_2_number.as_number(1110).should eq("one thousand one hundred and ten")
+     @int_2_number.as_number(9999).should eq("nine thousand nine hundred and ninetynine")
      @int_2_number.as_number(123999).should eq("one hundred and twentythree thousand nine hundred and ninetynine")
+  end
+  
+  it "works for numbers bigger than 1000 000" do
+     @int_2_number.as_number(1456034).should eq("one million four hundred and fiftysix thousand and thirtyfour")
   end
 end

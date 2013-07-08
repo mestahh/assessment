@@ -7,47 +7,50 @@ class Int2Number
 
   TENS = ['twenty', 'thirty', 'fourty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
 
-  LOTS = { 1000000 => 'million', 1000 => 'thousand', 100 => 'hundred'}
+  PLACE_VALUE = { 1000000 => 'million', 1000 => 'thousand', 100 => 'hundred'}
+
+  EMPTY = ''
 
   def as_number(int_number)
-    
-    number = ''
+
+    number = EMPTY
 
     if (int_number < 20)
-      return  numbers(int_number)
+      return numbers(int_number)
     end
-
-   
-
-    residuum = int_number
-
-    LOTS.keys.each do |key|
-      result = residuum / key
+    
+    PLACE_VALUE.keys.each do |key|
+      result = int_number / key
 
       if result >= 1
-        if (number != '') 
-          number += ' '
-        end
-        number += as_number(residuum / key) + ' ' + LOTS[key]
-        residuum = int_number % key
+        number = concat(number, as_number(result) + ' ' + PLACE_VALUE[key])
+      int_number %= key
       end
     end
-    
-    unless (residuum == 0)
-      unless (number == '' )
-        number += ' and ' + numbers(residuum)
-      else 
-        number += numbers(residuum)
-      end
+
+    unless (int_number == 0)
+      number = concat_and(number, numbers(int_number))
     end
-    
-    return number
+    number
   end
 
   private
 
-  def numbers(number)
+  def concat_and(number, add_tag)
+    unless (number == EMPTY)
+      number += ' and '
+    end
+    number += add_tag
+  end
 
+  def concat(number, add_tag)
+    unless (number == EMPTY)
+      number += ' '
+    end
+    number += add_tag
+  end
+
+  def numbers(number)
     if number < 20
       NUMBERS[number]
     else
@@ -55,16 +58,6 @@ class Int2Number
       TENS[number/10 - 2] + ones
     end
   end
-
-  # def hundreds(number)
-    # hundreds = number / 100
-    # if numbers(number % 100) != 'zero'
-      # ones = ' and ' + numbers(number % 100)
-    # else
-      # ones = ''
-    # end
-    # numbers(hundreds) + ' hundred' + ones
-  # end
 
   def get_ones(number)
     residuum = number % 10
