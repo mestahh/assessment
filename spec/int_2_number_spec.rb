@@ -54,4 +54,12 @@ describe Int2Number do
     @int_2_number.as_number(98).should eq("ninetyeight")
     @int_2_number.as_number(99).should eq("ninetynine")
   end
+
+  it "works with numbers between 999 and 100" do
+    @int_2_number.as_number(100).should eq("one hundred")
+    @int_2_number.as_number(221).should eq("two hundred and twentyone")
+    @int_2_number.as_number(999).should eq("nine hundred and ninetynine")
+    @int_2_number.as_number(567).should eq("five hundred and sixtyseven")
+    @int_2_number.as_number(701).should eq("seven hundred and one")
+  end
 end
