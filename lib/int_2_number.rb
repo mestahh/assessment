@@ -11,30 +11,39 @@ class Int2Number
 
   EMPTY = ''
 
-  def as_number(int_number)
+  def as_number(param_number)
 
+    is_num?(param_number)
+    int_number = param_number.to_i
+    
     number = EMPTY
 
-    if (int_number < 20)
-      return numbers(int_number)
-    end
-    
-    PLACE_VALUE.keys.each do |key|
-      result = int_number / key
+    if (number_defined_explicitly(int_number))
+      under_hundred(int_number)
+    else
 
-      if result >= 1
-        number = concat(number, as_number(result) + ' ' + PLACE_VALUE[key])
-      int_number %= key
+      PLACE_VALUE.keys.each do |key|
+        result = int_number / key
+
+        if result >= 1
+          number = concat(number, as_number(result) + ' ' + PLACE_VALUE[key])
+        int_number %= key
+        end
       end
-    end
 
-    unless (int_number == 0)
-      number = concat_and(number, numbers(int_number))
-    end
+      unless (int_number == 0)
+        number = concat_and(number, under_hundred(int_number))
+      end
+
     number
+    end
   end
 
   private
+
+  def number_defined_explicitly(number)
+    number < 20
+  end
 
   def concat_and(number, add_tag)
     unless (number == EMPTY)
@@ -50,7 +59,7 @@ class Int2Number
     number += add_tag
   end
 
-  def numbers(number)
+  def under_hundred(number)
     if number < 20
       NUMBERS[number]
     else
@@ -62,6 +71,14 @@ class Int2Number
   def get_ones(number)
     residuum = number % 10
     residuum == 0 ? '' : NUMBERS[residuum]
+  end
+
+  def is_num?(str)
+    begin
+      !!Integer(str)
+    rescue ArgumentError, TypeError
+      raise 'Parameter must be an int.'
+    end
   end
 
 end

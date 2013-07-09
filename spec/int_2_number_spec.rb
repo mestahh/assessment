@@ -6,6 +6,10 @@ describe Int2Number do
     @int_2_number = Int2Number.new
   end
 
+  it "raises exception if the input is a string" do
+    expect { @int_2_number.as_number('not_an_int') }.to raise_error("Parameter must be an int.")
+  end
+
   it "returns the numbers for a single digit integer" do
     @int_2_number.as_number(1).should eq("one")
     @int_2_number.as_number(2).should eq("two")

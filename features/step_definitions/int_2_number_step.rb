@@ -13,3 +13,7 @@ end
 Then(/^I should see (.*)$/) do |converted_string|
   page.should have_content(converted_string)
 end
+
+When(/^I enter a string into the input field$/) do
+  fill_in 'number', :with => 'bad integer'
+end

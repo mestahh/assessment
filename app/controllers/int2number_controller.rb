@@ -4,7 +4,11 @@ class Int2numberController < ApplicationController
   
   def convert
     converter = Int2Number.new
-    @converted = converter.as_number(params['number'].to_i)
+    begin
+      @converted = converter.as_number(params['number'])
+    rescue
+      redirect_to root_path, :alert => 'I can not convert a string!'
+    end
   end
   
   def show

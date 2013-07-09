@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Integer2numberString</title>
+  <title>Integer 2 number converter</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+	<h1>Welcome, I'll help you convert integers to words.*</h1>
+<% if flash[:alert] %>
+<p id="errorline" >
+	<%= flash[:alert] %>
+</p>
+<% end %>
 <%= yield %>
-
+<p id="footnote">* Just under 1 000 000 000</p>
 </body>
 </html>
