@@ -15,7 +15,7 @@ class Int2Number
 
     is_num?(param_number)
     int_number = param_number.to_i
-    
+
     number = EMPTY
 
     if (number_defined_explicitly(int_number))
@@ -70,12 +70,12 @@ class Int2Number
 
   def get_ones(number)
     residuum = number % 10
-    residuum == 0 ? '' : NUMBERS[residuum]
+    residuum == 0 ? '' : '-' + NUMBERS[residuum]
   end
 
   def is_num?(str)
     begin
-      !!Integer(str)
+    !!Integer(str)
     rescue ArgumentError, TypeError
       raise 'Parameter must be an int.'
     end

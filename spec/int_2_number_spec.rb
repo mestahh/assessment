@@ -48,32 +48,32 @@ describe Int2Number do
   end
 
   it "works not just for multiplies of ten between 20 and 100" do
-    @int_2_number.as_number(21).should eq("twentyone")
-    @int_2_number.as_number(32).should eq("thirtytwo")
-    @int_2_number.as_number(43).should eq("fourtythree")
-    @int_2_number.as_number(54).should eq("fiftyfour")
-    @int_2_number.as_number(65).should eq("sixtyfive")
-    @int_2_number.as_number(76).should eq("seventysix")
-    @int_2_number.as_number(87).should eq("eightyseven")
-    @int_2_number.as_number(98).should eq("ninetyeight")
-    @int_2_number.as_number(99).should eq("ninetynine")
+    @int_2_number.as_number(21).should eq("twenty-one")
+    @int_2_number.as_number(32).should eq("thirty-two")
+    @int_2_number.as_number(43).should eq("fourty-three")
+    @int_2_number.as_number(54).should eq("fifty-four")
+    @int_2_number.as_number(65).should eq("sixty-five")
+    @int_2_number.as_number(76).should eq("seventy-six")
+    @int_2_number.as_number(87).should eq("eighty-seven")
+    @int_2_number.as_number(98).should eq("ninety-eight")
+    @int_2_number.as_number(99).should eq("ninety-nine")
   end
 
   it "works with numbers between 999 and 100" do
     @int_2_number.as_number(100).should eq("one hundred")
-    @int_2_number.as_number(221).should eq("two hundred and twentyone")
-    @int_2_number.as_number(999).should eq("nine hundred and ninetynine")
-    @int_2_number.as_number(567).should eq("five hundred and sixtyseven")
+    @int_2_number.as_number(221).should eq("two hundred and twenty-one")
+    @int_2_number.as_number(999).should eq("nine hundred and ninety-nine")
+    @int_2_number.as_number(567).should eq("five hundred and sixty-seven")
     @int_2_number.as_number(701).should eq("seven hundred and one")
   end
   
   it "works for numbers between 1000 and 1000 0000" do
      @int_2_number.as_number(1110).should eq("one thousand one hundred and ten")
-     @int_2_number.as_number(9999).should eq("nine thousand nine hundred and ninetynine")
-     @int_2_number.as_number(123999).should eq("one hundred and twentythree thousand nine hundred and ninetynine")
+     @int_2_number.as_number(9999).should eq("nine thousand nine hundred and ninety-nine")
+     @int_2_number.as_number(123999).should eq("one hundred and twenty-three thousand nine hundred and ninety-nine")
   end
   
   it "works for numbers bigger than 1000 000" do
-     @int_2_number.as_number(1456034).should eq("one million four hundred and fiftysix thousand and thirtyfour")
+     @int_2_number.as_number(1456034).should eq("one million four hundred and fifty-six thousand and thirty-four")
   end
 end

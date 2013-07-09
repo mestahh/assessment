@@ -8,7 +8,7 @@ Feature: A number as an integer should be converted into a string representation
 	
 		When I enter 1234567 into the input field
 		And press the submit button
-		Then I should see one million two hundred and thirtyfour thousand five hundred and sixtyseven
+		Then I should see one million two hundred and thirty-four thousand five hundred and sixty-seven
 		
 	Scenario: given a String as an input, an error message should appear
 	
